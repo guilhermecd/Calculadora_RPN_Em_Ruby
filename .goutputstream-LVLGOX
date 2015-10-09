@@ -1,0 +1,16 @@
+# File:  test.rb
+
+require_relative "binarytree"
+require "test/unit"
+include BinaryTree
+
+
+class TestNode < Test::Unit::TestCase
+	def test_simple
+		$root = Node.new()
+		assert_equal(TRUE, Node.new().verifica_expressao("+ - 5 9 5\n"), "Expressao não eh valida")
+		raiz = $root.add()
+		assert_equal(5, Node.new().size_tree(raiz))
+		assert_equal(TRUE, Node.new().size_tree(raiz))
+  	end
+end

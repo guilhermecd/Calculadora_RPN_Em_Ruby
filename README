@@ -1,0 +1,26 @@
+------------------
+| LINGUAGEM RUBY |
+------------------
+
+Ruby é uma linguagem com um cuidadoso equilíbrio . O seu criador, Yukihiro “Matz”
+Matsumoto, uniu partes das suas linguagens favoritas (Perl, Smalltalk, Eiffel, Ada,
+CLU, Dylan, Scheme, Python e Lisp) para formar uma nova linguagem que equilibra a
+programação funcional com a programação imperativa.
+O Ruby é também totalmente livre. Não somente livre de custos, mas também livre
+para utilizar, copiar, modificar e distribuir
+
+
+------------
+| DECRIÇÃO |
+------------
+
+Este código escrito em Ruby simula uma calculadora RPN utilizando árvore. Também
+é utilizado uma biblioteca de teste -- test/unit-- utilizada para fazer alguns 
+testes básicos. Com esse programa foi possível entender um pouco da lingaugem ruby.
+É possível entender como é a codificação (declaração, imports, recursao, métodos e
+classes). bibliotecas utilizadas, velocidade de execução e outras curiosidades.
+
+
+
+Site oficial
+www.ruby-lang.org
