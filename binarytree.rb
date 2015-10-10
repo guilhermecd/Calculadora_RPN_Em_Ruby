@@ -1,35 +1,35 @@
 =begin
-  Copyright (C) 2014, Guilherme Castro Diniz.
+	Copyright (C) 2014, Guilherme Castro Diniz.
 
-   Este programa é um software livre; você pode redistribui-lo e/ou
-   modifica-lo dentro dos termos da Licença Pública Geral GNU como
-   publicada pela Fundação do Software Livre (FSF); na versão 2 da
-   Licença.
+	This program is free software; you can redistribute it and/or
+	modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation (FSF); in version 2 of the
+	license.
 
-   Este programa é distribuído na esperança que possa ser  útil,
-   mas SEM NENHUMA GARANTIA  implícita de ADEQUAÇÂO a qualquer
-   MERCADO ou APLICAÇÃO EM PARTICULAR. Veja a
-   Licença Pública Geral GNU para maiores detalhes.
-   <http://www.gnu.org/licenses/>
+	This program is distributed in the hope that it can be useful,
+	but WITHOUT ANY IMPLIED WARRANTY OF ADEQUAÇÂO TO ANY
+	MARKET OR APPLICATION IN PARTICULAR. See the
+	GNU General Public License for more details.
+	<http://www.gnu.org/licenses/>
 =end
 
 module BinaryTree
 	class Node
 		attr_accessor :left, :right, :data
-		$expressao = Array.new
-		$orig = Array.new
+		$expression = Array.new
+		$src = Array.new
 		$i = 0
 
-		#inicializa as viriáveis
+		#initialize viriable
 		def initialize left = nil, right = nil, data = nil
 			@data = data
   			@left = left 
    			@right = right
 		end
 
-		#Monta a árvore pre_fixa
+		#create tree pre-fixa
 		def add
-			t = $expressao[$i]
+			t = $expression[$i]
 			$i = $i + 1
 			node = Node.new()
 			node.data = t
@@ -43,7 +43,7 @@ module BinaryTree
     			return node;
 		end
 		
-		#imprime todos o nós da arvore
+		#print all node
 		def show (node) 
 			if !node.nil?
 				puts "(#{node.data})"
@@ -52,7 +52,7 @@ module BinaryTree
 			end
 		end
 
-		#retorna a quantidade nós que tem na arvore
+		#Returns the number of nodes of the tree
 		def size_tree (node)
 			if node.left == nil && node.right == nil
 				return 1
@@ -61,34 +61,34 @@ module BinaryTree
 			end
 		end
 		
-		#retorna o resultado da expressao
+		#retorna the result od expression
 		def result
 			i = 0
 			b = ""
-			while i < $orig.length
-				b.concat($orig[i])
+			while i < $src.length
+				b.concat($src[i])
 				i = i + 1
 			end
-			print "Expressao montada: "
+			print "Expression created: "
 			puts b
 			k = eval(b)
 		return k
 		end
 
-		#verifica se as folhas são todas numeros e monta a expressao original
+		#Checks whether the sheets are all numerals and assembles the srcinal expression
 		def node_leaves(node)
 			if $invalid == FALSE
 				return $invalid
 			end
 			if node.left == nil && node.right == nil
-				$orig << node.data
+				$src << node.data
 				num = node.data.to_i
 				if num == 0 && node.data
 					return FALSE
 				end 
 			else
 				node_leaves(node.left)
-				$orig << node.data
+				$src << node.data
 				node_leaves(node.right)
 
 			end
@@ -96,27 +96,27 @@ module BinaryTree
 		end
 
 
-		# verifica se a expressao é valida
-		def verifica_expressao(expressao)
+		# Checks the expression is valid
+		def verify_expression(expression)
 			i = 0
 			qtd_simb = 0 
 			qtd_num = 0
-			digito = expressao[0].to_i
+			digit = expression[0].to_i
 
-			if digito != 0 || expressao[0] == "0"
+			if digit != 0 || expression[0] == "0"
 				$invalid = FALSE
 				return FALSE
 			end 
 
-			while i < expressao.length + (-1)
-				digito = expressao[i].to_i
-				if digito == 0 && expressao[i] == '+' ||expressao[i] == "-" || expressao[i] == "*" || expressao[i] == "/" || expressao[i] == " " 
-					if expressao[i] != " "
-						$expressao << expressao[i]
+			while i < expression.length + (-1)
+				digit = expression[i].to_i
+				if digit == 0 && expression[i] == '+' ||expression[i] == "-" || expression[i] == "*" || expression[i] == "/" || expression[i] == " " 
+					if expression[i] != " "
+						$expression << expression[i]
 						qtd_simb = qtd_simb + 1 
 					end
-				elsif digito >= 1 || digito <= 9 || expressao[i] == "0"
-					$expressao << expressao[i]
+				elsif digit >= 1 || digit <= 9 || expression[i] == "0"
+					$expression << expression[i]
 					qtd_num = qtd_num +1
 				end 
 			i = i + 1
